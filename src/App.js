@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+// import ValidationSample from "./ValidationSample";
+// import RefSample from "./RefSample";
+import ScrollBox from "./ScrollBox";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+
+// 함수형 컴포넌트에서 클래스형 컴포넌트로 바꿔놓습니다.
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <ScrollBox ref={ref => (this.scrollbox = ref)} />
+        {/* 화살표 함수로 함수를 호출하여 렌더링 시 발생할 수 있는 오류를 막습니다. */}
+        <button onClick={() => this.scrollbox.scrollToBottom()}>
+          맨 밑으로
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
